@@ -1,5 +1,6 @@
 package com.techcoders.petsitter.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -18,16 +19,17 @@ public class Role {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Column(name = "nome")
 	@Enumerated(EnumType.STRING)
-	private EnumRole nome;
+	private EnumRole name;
 	
 	public Role() {
 		
 	}
 
-	public Role(Integer id, EnumRole nome) {
+	public Role(Integer id, EnumRole name) {
 		this.id = id;
-		this.nome = nome;
+		this.name = name;
 	}
 
 	public Integer getId() {
@@ -38,14 +40,12 @@ public class Role {
 		this.id = id;
 	}
 
-	public EnumRole getNome() {
-		return nome;
+	public EnumRole getName() {
+		return name;
 	}
 
-	public void setNome(EnumRole nome) {
-		this.nome = nome;
+	public void setName(EnumRole name) {
+		this.name = name;
 	}
-	
-	
 	
 }
