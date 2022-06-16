@@ -5,7 +5,7 @@ export function App() {
     <>
       <GlobalStyle />
       <div className="App">
-        Olá
+        Petsitter
       </div>
     </>
   );
