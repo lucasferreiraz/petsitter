@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Box, Flex, Text, VStack } from "@chakra-ui/react";
+import { Box, Flex, Text, VStack, RangeSlider, RangeSliderTrack, RangeSliderFilledTrack, RangeSliderThumb } from "@chakra-ui/react";
 
 import { Header } from "../../components/Header";
 import { SitterCard } from "../../components/SitterCard";
 
 import { sittersData, SittersDataProps } from '../../mock/sitters';
+import { Filter } from "./Filter";
 
 export function Home() {
   const [sitters, setSitters] = useState<SittersDataProps[]>([]);
@@ -38,8 +39,9 @@ export function Home() {
         >
           <Box
             width="20rem"
+            pr="10"
           >
-            Filtragem...
+            <Filter />
           </Box>
 
           <Box

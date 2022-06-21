@@ -16,7 +16,7 @@ export const sittersData: SittersDataProps[] = [
     price: 'R$ 3,00',
     description: 'Desde sempre gostei muito de animais, meu tio me escolhia quando viajava e deixava seu cachorro comigo. Sempre gostei de dar essa atenção especial a eles, é o que eu me sinto bem em fazer. O que eles precisam é de atenção e carinho e em troca recebemos o amor incondicional deles. Seu companheiro vai ser muito bem recebido e amado.',
     tags: ['Passeio', 'Adestramento'],
-    rating: 4.5,
+    rating: 1,
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ export const sittersData: SittersDataProps[] = [
     price: 'R$ 3,00',
     description: 'Desde sempre gostei muito de animais, meu tio me escolhia quando viajava e deixava seu cachorro comigo. Sempre gostei de dar essa atenção especial a eles, é o que eu me sinto bem em fazer. O que eles precisam é de atenção e carinho e em troca recebemos o amor incondicional deles. Seu companheiro vai ser muito bem recebido e amado.',
     tags: ['Passeio', 'Adestramento'],
-    rating: 4.5,
+    rating: 2,
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ export const sittersData: SittersDataProps[] = [
     price: 'R$ 3,00',
     description: 'Desde sempre gostei muito de animais, meu tio me escolhia quando viajava e deixava seu cachorro comigo. Sempre gostei de dar essa atenção especial a eles, é o que eu me sinto bem em fazer. O que eles precisam é de atenção e carinho e em troca recebemos o amor incondicional deles. Seu companheiro vai ser muito bem recebido e amado.',
     tags: ['Passeio', 'Adestramento'],
-    rating: 1,
+    rating: 4,
   },
   {
     id: 4,
@@ -43,6 +43,6 @@ export const sittersData: SittersDataProps[] = [
     price: 'R$ 3,00',
     description: 'Desde sempre gostei muito de animais, meu tio me escolhia quando viajava e deixava seu cachorro comigo. Sempre gostei de dar essa atenção especial a eles, é o que eu me sinto bem em fazer. O que eles precisam é de atenção e carinho e em troca recebemos o amor incondicional deles. Seu companheiro vai ser muito bem recebido e amado.',
     tags: ['Passeio', 'Adestramento'],
-    rating: 4.5,
+    rating: 5,
   }
 ];
