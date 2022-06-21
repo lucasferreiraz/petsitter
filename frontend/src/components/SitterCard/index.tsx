@@ -1,4 +1,5 @@
 import { Avatar, Box, Flex, HStack, Text } from "@chakra-ui/react";
+import { Rating } from "../Rating";
 
 interface TagProps {
   title: string;
@@ -80,7 +81,7 @@ export function SitterCard(props: SitterCardProps) {
         <HStack spacing="3">
           {props.tags.map(tag => <Tag key={tag} title={tag} />)}
         </HStack>
-        12 Jan, 2021
+        <Rating rating={props.rating} />
       </Flex>
     </Flex>
   );
