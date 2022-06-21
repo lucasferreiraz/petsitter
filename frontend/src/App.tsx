@@ -1,12 +1,13 @@
-import { GlobalStyle } from './styles/global';
+import { ChakraProvider } from '@chakra-ui/react';
+
+import { theme } from './styles/theme';
 
 export function App() {
   return (
-    <>
-      <GlobalStyle />
+    <ChakraProvider theme={theme}>
       <div className="App">
         Petsitter
       </div>
-    </>
+    </ChakraProvider>
   );
 }
