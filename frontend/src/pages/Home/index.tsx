@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text, VStack } from "@chakra-ui/react";
 
 import { Header } from "../../components/Header";
 import { SitterCard } from "../../components/SitterCard";
@@ -21,6 +21,7 @@ export function Home() {
         w="100%"
         maxWidth={1480}
         mx="auto"
+        px="10"
       >
         <Flex
           bg="white"
@@ -44,10 +45,11 @@ export function Home() {
           <Box
             flex="1"
           >
-            <Flex
-              direction="column"
+            <Text mb="3">Mostrando 5 resultados</Text>
+            <VStack
+              align="flex-start"
+              spacing="5"
             >
-              <Text mb="3">Mostrando 5 resultados</Text>
               {sitters.map(sitter => (
                 <SitterCard
                   key={sitter.name}
@@ -59,7 +61,7 @@ export function Home() {
                   tags={sitter.tags}
                 />
               ))}
-            </Flex>
+            </VStack>
           </Box>
         </Flex>
       </Box>

@@ -7,6 +7,7 @@ export function Header() {
     <Box
       as="header"
       bg="linear-gradient(to right, #f7971e, #f9bc22)"
+      px="10"
     >
       <Flex
         w="100%"

@@ -40,6 +40,11 @@ export function SitterCard(props: SitterCardProps) {
       borderRadius="md"
       bg="white"
       boxShadow="lg"
+      cursor="pointer"
+      transition="transform 0.2s"
+      _hover={{
+        transform: "translateY(-5px)",
+      }}
     >
       <Flex
         align="center"
