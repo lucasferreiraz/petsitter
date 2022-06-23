@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Flex, Text, VStack, RangeSlider, RangeSliderTrack, RangeSliderFilledTrack, RangeSliderThumb } from "@chakra-ui/react";
+import { Box, Flex, Text, VStack, InputGroup, InputLeftElement, Input, Icon, Divider, Select, Button, Spinner, HStack, Center } from "@chakra-ui/react";
 
 import { Header } from "../../components/Header";
 import { SitterCard } from "../../components/SitterCard";
@@ -7,8 +7,20 @@ import { SitterCard } from "../../components/SitterCard";
 import { sittersData, SittersDataProps } from '../../mock/sitters';
 import { Filter } from "./Filter";
 
+import { CgWorkAlt } from 'react-icons/cg'
+import { FiMapPin } from 'react-icons/fi';
+import { IoMdCalendar } from 'react-icons/io';
+
 export function Home() {
+  const [searchIsLoading, setSearchIsLoading] = useState(false);
   const [sitters, setSitters] = useState<SittersDataProps[]>([]);
+
+  async function search() {
+    setSearchIsLoading(true);
+    setTimeout(() => {
+      setSearchIsLoading(false);
+    }, 600);
+  }
 
   useEffect(() => {
     setSitters(sittersData);
@@ -24,15 +36,48 @@ export function Home() {
         mx="auto"
         px="10"
       >
-        <Flex
+        <HStack
           bg="white"
           boxShadow='xl'
-          p="7"
+          p="3"
           borderRadius="md"
           transform="translateY(-50%)"
         >
-          Filtragem...
-        </Flex>
+          <InputGroup>
+            <InputLeftElement
+              pointerEvents='none'
+              children={<Icon as={CgWorkAlt} />}
+            />
+            <Select variant='outline' border="none" placeholder='Serviço' pl="5" />
+          </InputGroup>
+          <Center height='10'>
+            <Divider orientation='vertical' />
+          </Center>
+          <InputGroup
+          >
+            <InputLeftElement
+              pointerEvents='none'
+              children={<Icon as={FiMapPin} />}
+            />
+            <Input border="none" type='text' placeholder='Endereço' />
+          </InputGroup>
+          <Center height='10'>
+            <Divider orientation='vertical' />
+          </Center>
+          <InputGroup
+            display="flex"
+            alignItems="center"
+          >
+            <InputLeftElement
+              pointerEvents='none'
+              children={<Icon as={IoMdCalendar} />}
+            />
+            <Input border="none" type='text' placeholder='Data' />
+          </InputGroup>
+          <Button w="16rem" colorScheme="orange" onClick={search} display="flex" justifyContent="center" alignItems="center">
+            {searchIsLoading ? <Box><Spinner size='sm' /></Box> : 'Buscar'}
+          </Button>
+        </HStack>
 
         <Flex
           mt="5"
