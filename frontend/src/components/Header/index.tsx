@@ -2,7 +2,11 @@ import { Box, Flex, Heading, Image } from "@chakra-ui/react";
 import { Logo } from "../Logo";
 import { HeaderNavigation } from "./HeaderNavigation";
 
-export function Header() {
+interface HeaderProps {
+  navItemSelected: "search" | "addPet" | "login";
+}
+
+export function Header({ navItemSelected }: HeaderProps) {
   return (
     <Box
       as="header"
@@ -19,7 +23,7 @@ export function Header() {
       >
         <Logo />
 
-        <HeaderNavigation />
+        <HeaderNavigation selected={navItemSelected} />
       </Flex>
 
       <Flex

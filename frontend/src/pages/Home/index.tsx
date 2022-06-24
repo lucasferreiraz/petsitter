@@ -28,7 +28,7 @@ export function Home() {
 
   return (
     <Flex direction="column">
-      <Header />
+      <Header navItemSelected="search" />
 
       <Box
         w="100%"
