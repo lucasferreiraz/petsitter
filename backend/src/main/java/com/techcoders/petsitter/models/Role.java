@@ -27,8 +27,7 @@ public class Role {
 		
 	}
 
-	public Role(Integer id, EnumRole name) {
-		this.id = id;
+	public Role(EnumRole name) {
 		this.name = name;
 	}
 

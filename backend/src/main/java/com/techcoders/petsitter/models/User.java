@@ -58,8 +58,7 @@ public class User {
 		
 	}
 
-	public User(Long id, String username, String cpf, String address, String email, String password) {
-		this.id = id;
+	public User(String username, String cpf, String address, String email, String password) {
 		this.username = username;
 		this.cpf = cpf;
 		this.address = address;
