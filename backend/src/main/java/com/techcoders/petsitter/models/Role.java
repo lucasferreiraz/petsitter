@@ -1,6 +1,5 @@
 package com.techcoders.petsitter.models;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -19,7 +18,6 @@ public class Role {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "nome")
 	@Enumerated(EnumType.STRING)
 	private EnumRole name;
 	

@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.techcoders.petsitter.models.User;
 
 //Armazena informações do usuário providas pelo UserDetailsService para ser encapsulado pelos objetos de Autentificação
@@ -26,6 +27,7 @@ public class UserDetailsImpl implements UserDetails{
 	
 	private String email;
 	
+	@JsonIgnore
 	private String password;
 	
 	private Collection<? extends GrantedAuthority> authorities;
@@ -110,20 +112,13 @@ public class UserDetailsImpl implements UserDetails{
 	}
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (obj == null || getClass() != obj.getClass())
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		UserDetailsImpl other = (UserDetailsImpl) obj;
-		return Objects.equals(id, other.id);
+		UserDetailsImpl user = (UserDetailsImpl) obj;
+		return Objects.equals(id, user.id);
 	}
 
 }

@@ -14,12 +14,7 @@ import org.springframework.web.util.WebUtils;
 
 import com.techcoders.petsitter.security.services.UserDetailsImpl;
 
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.SignatureException;
-import io.jsonwebtoken.UnsupportedJwtException;
+import io.jsonwebtoken.*;
 
 @Component
 public class JwtUtils {
@@ -70,7 +65,7 @@ public class JwtUtils {
 		return Jwts.builder()
 				   .setSubject(username)
 				   .setIssuedAt(new Date())
-				   .setExpiration(new Date( new Date().getTime() + jwtExpirationMs))
+				   .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
 				   .signWith(SignatureAlgorithm.HS512, jwtSecret)
 				   .compact();
 	}

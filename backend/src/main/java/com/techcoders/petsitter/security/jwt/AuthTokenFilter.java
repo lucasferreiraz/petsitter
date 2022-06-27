@@ -54,6 +54,8 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 			logger.error("Não foi possível autentificar o usuário: {}", e);
 		}
 		
+		filterChain.doFilter(request, response);
+		
 	}
 	
 	private String parseJwt(HttpServletRequest request) {
