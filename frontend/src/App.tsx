@@ -8,6 +8,7 @@ import {
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { ForgotPassword } from './pages/ForgotPassword';
+import { Register } from './pages/Register';
 
 import { theme } from './styles/theme';
 
@@ -19,6 +20,7 @@ export function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/recuperarSenha" element={<ForgotPassword />} />
+          <Route path="/registrar" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
