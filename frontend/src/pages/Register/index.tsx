@@ -1,10 +1,42 @@
-import { Box, Button, ButtonGroup, Flex, Heading, Radio, RadioGroup, Stack } from "@chakra-ui/react";
+import { useState } from "react";
+import { Flex, Heading, ScaleFade } from "@chakra-ui/react";
+import { SelectProfileType } from "./SelectProfileType";
+import { MainInformation } from "./MainInformation";
+import { Address } from "./Address";
+
+type FormStep = "selectProfileType" | "mainInformation" | "address";
+
+export interface formStateProps {
+  formStep: FormStep;
+  prevStep: () => void;
+  nextStep: () => void;
+}
 
 export function Register() {
+  const [formStep, setFormStep] = useState<FormStep>("selectProfileType");
+
+  function nextStep() {
+    if (formStep === "selectProfileType") {
+      setFormStep("mainInformation");
+    } else if (formStep === "mainInformation") {
+      setFormStep("address");
+    } else if (formStep === "address") {
+      setFormStep("selectProfileType");
+    }
+  }
+  function prevStep() {
+    if (formStep === "mainInformation") {
+      setFormStep("selectProfileType");
+    } else if (formStep === "address") {
+      setFormStep("mainInformation");
+    }
+  }
+
   return (
     <Flex
       w="100vw"
       h="100vh"
+      overflow="hidden"
     >
       <Flex
         flex="1"
@@ -13,63 +45,10 @@ export function Register() {
       >
         <Heading>IMAGE</Heading>
       </Flex>
-      <Flex
-        flex="0.5"
-        bg="white"
-        py="4rem"
-        px="8rem"
-        direction="column"
-        justify="space-between"
-      >
-        <Heading>
-          Qual será o seu tipo de <br />
-          perfil no Pet Sitter?
-        </Heading>
-
-        <Box
-          flex="1"
-          mt="2rem"
-        >
-          <RadioGroup defaultValue='proprietario'>
-            <Stack spacing={5} direction='column'>
-              <Box
-                bg="orange.main"
-                p="2rem"
-                fontWeight="bold"
-                color="white"
-                cursor="pointer"
-                rounded="md"
-              >
-                <Radio size='lg' value='proprietario'>
-                  Proprietário
-                </Radio>
-              </Box>
-              <Box
-                bg="orange.main"
-                p="2rem"
-                fontWeight="bold"
-                color="white"
-                cursor="pointer"
-                rounded="md"
-              >
-                <Radio size='lg' value='cuidador'>
-                  Cuidador
-                </Radio>
-              </Box>
-            </Stack>
-          </RadioGroup>
-        </Box>
-
-        <ButtonGroup
-          variant='outline'
-          spacing='4'
-          display="flex"
-          justifyContent="flex-end"
-        >
-          <Button colorScheme='red'>Cancelar</Button>
-          <Button variant='solid' colorScheme='orange'>Continuar</Button>
-        </ButtonGroup>
-      </Flex>
+      
+      <SelectProfileType formStep={formStep} prevStep={prevStep} nextStep={nextStep} />
+      <MainInformation formStep={formStep} prevStep={prevStep} nextStep={nextStep} />
+      <Address formStep={formStep} prevStep={prevStep} nextStep={nextStep} />
     </Flex>
   );
 }
