@@ -1,37 +1,12 @@
-import { useState } from "react";
-import { Flex, Heading, ScaleFade } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import { SelectProfileType } from "./SelectProfileType";
 import { MainInformation } from "./MainInformation";
 import { Address } from "./Address";
-
-type FormStep = "selectProfileType" | "mainInformation" | "address";
-
-export interface formStateProps {
-  formStep: FormStep;
-  prevStep: () => void;
-  nextStep: () => void;
-}
+import { RegisterPet } from "./RegisterPet";
+import { RegisterSitter } from "./RegisterSitter";
+import { RegisterProvider } from "../../hooks/useRegister";
 
 export function Register() {
-  const [formStep, setFormStep] = useState<FormStep>("selectProfileType");
-
-  function nextStep() {
-    if (formStep === "selectProfileType") {
-      setFormStep("mainInformation");
-    } else if (formStep === "mainInformation") {
-      setFormStep("address");
-    } else if (formStep === "address") {
-      setFormStep("selectProfileType");
-    }
-  }
-  function prevStep() {
-    if (formStep === "mainInformation") {
-      setFormStep("selectProfileType");
-    } else if (formStep === "address") {
-      setFormStep("mainInformation");
-    }
-  }
-
   return (
     <Flex
       w="100vw"
@@ -46,9 +21,13 @@ export function Register() {
         <Heading>IMAGE</Heading>
       </Flex>
       
-      <SelectProfileType formStep={formStep} prevStep={prevStep} nextStep={nextStep} />
-      <MainInformation formStep={formStep} prevStep={prevStep} nextStep={nextStep} />
-      <Address formStep={formStep} prevStep={prevStep} nextStep={nextStep} />
+      <RegisterProvider>
+        <SelectProfileType />
+        <MainInformation />
+        <Address />
+        <RegisterPet />
+        <RegisterSitter />
+      </RegisterProvider>
     </Flex>
   );
 }

@@ -1,14 +1,14 @@
 import { Box, Button, ButtonGroup, Flex, Heading, Icon, Input, InputGroup, InputLeftElement, InputRightElement, ScaleFade, SlideFade, Stack } from "@chakra-ui/react";
-import { AiOutlineFieldNumber, AiOutlineHome, AiOutlineIdcard, AiOutlinePhone } from "react-icons/ai";
+import { AiOutlineFieldNumber, AiOutlineHome } from "react-icons/ai";
 import { BiDotsHorizontalRounded, BiMap } from "react-icons/bi";
 import { FaCity } from "react-icons/fa";
 import { FiMap } from "react-icons/fi";
-import { GoEye, GoEyeClosed, GoPerson } from "react-icons/go";
-import { MdLocationCity, MdOutlineMail } from "react-icons/md";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { formStateProps } from "..";
+import { MdLocationCity } from "react-icons/md";
+import { useRegister } from "../../../hooks/useRegister";
 
-export function Address({ formStep, prevStep, nextStep }: formStateProps) {
+export function Address() {
+  const { formStep, nextStep, prevStep } = useRegister();
+
   return (
     <Flex
       flex="0.5"
@@ -109,7 +109,7 @@ export function Address({ formStep, prevStep, nextStep }: formStateProps) {
           justifyContent="flex-end"
         >
           <Button size="lg" colorScheme='red' onClick={prevStep}>Voltar</Button>
-          <Button size="lg" variant='solid' colorScheme='orange'>Continuar</Button>
+          <Button size="lg" variant='solid' colorScheme='orange' onClick={nextStep}>Continuar</Button>
         </ButtonGroup>
       </SlideFade>
     </Flex>

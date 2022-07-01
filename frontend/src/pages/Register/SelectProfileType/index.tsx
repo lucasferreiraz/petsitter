@@ -1,11 +1,8 @@
-import { useState } from "react";
-import { Box, Button, ButtonGroup, Flex, Heading, Radio, RadioGroup, ScaleFade, SlideFade, Stack, Text } from "@chakra-ui/react";
-import { formStateProps } from "..";
+import { Box, Button, ButtonGroup, Flex, Heading, Radio, RadioGroup, SlideFade, Stack, Text } from "@chakra-ui/react";
+import { useRegister } from "../../../hooks/useRegister";
 
-type ProfileType = "proprietario" | "cuidador";
-
-export function SelectProfileType({ formStep, nextStep }: formStateProps) {
-  const [profileType, setProfileType] = useState<ProfileType>("proprietario");
+export function SelectProfileType() {
+  const { formStep, nextStep, profileType, setProfileType } = useRegister();
 
   return (
     <Flex

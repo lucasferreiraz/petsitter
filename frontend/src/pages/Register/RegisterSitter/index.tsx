@@ -1,14 +1,10 @@
-import { Box, Button, ButtonGroup, Flex, Heading, Icon, Input, InputGroup, InputLeftElement, InputRightElement, ScaleFade, SlideFade, Stack } from "@chakra-ui/react";
-import { useState } from "react";
+import { Box, Button, ButtonGroup, Flex, Heading, Icon, Input, InputGroup, InputLeftElement, SlideFade, Stack } from "@chakra-ui/react";
 import { AiOutlineIdcard, AiOutlinePhone } from "react-icons/ai";
-import { GoEye, GoEyeClosed, GoPerson } from "react-icons/go";
+import { GoPerson } from "react-icons/go";
 import { MdOutlineMail } from "react-icons/md";
-import { RiLockPasswordLine } from "react-icons/ri";
 import { useRegister } from "../../../hooks/useRegister";
 
-export function MainInformation() {
-  const [showPassword, setShowPassword] = useState(false);
-
+export function RegisterSitter() {
   const { formStep, nextStep, prevStep } = useRegister();
 
   return (
@@ -17,11 +13,11 @@ export function MainInformation() {
       bg="white"
       py="4rem"
       px="8rem"
-      display={formStep !== "mainInformation" ? "none" : "inherit"}
+      display={formStep !== "registerSitter" ? "none" : "inherit"}
     >
       <SlideFade
         offsetY='25%'
-        in={formStep === "mainInformation"}
+        in={formStep === "registerSitter"}
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -31,7 +27,7 @@ export function MainInformation() {
         }}
       >
         <Heading>
-          Cadastro
+          Adicione as seguintes informações para concluir seu cadastro:
         </Heading>
 
         <Box
@@ -68,29 +64,6 @@ export function MainInformation() {
                 children={<Icon as={AiOutlinePhone} color='gray.300' />}
               />
               <Input type='number' placeholder='Telefone' />
-            </InputGroup>
-
-            <InputGroup size="lg">
-              <InputLeftElement
-                pointerEvents='none'
-                children={<Icon as={RiLockPasswordLine} color="gray.300" />}
-              />
-              <Input type={showPassword ? 'text' : 'password'} placeholder='Senha' />
-              <InputRightElement
-                cursor="pointer"
-                onClick={() => setShowPassword(prevState => !prevState)}
-                children={
-                  <Icon as={showPassword ? GoEye : GoEyeClosed} color='gray.300' />
-                }
-              />
-            </InputGroup>
-
-            <InputGroup size="lg">
-              <InputLeftElement
-                pointerEvents='none'
-                children={<Icon as={RiLockPasswordLine} color="gray.300" />}
-              />
-              <Input type={showPassword ? 'text' : 'password'} placeholder='Confirmar senha' />
             </InputGroup>
           </Stack>
         </Box>
