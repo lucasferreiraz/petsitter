@@ -1,5 +1,6 @@
-import { Box, Button, ButtonGroup, Flex, Heading, Icon, Input, InputGroup, InputLeftElement, SlideFade, Stack } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Flex, Heading, Icon, Input, InputGroup, InputLeftElement, Select, SlideFade, Stack, Text } from "@chakra-ui/react";
 import { AiOutlineIdcard, AiOutlinePhone } from "react-icons/ai";
+import { FaBabyCarriage, FaCat, FaDog } from "react-icons/fa";
 import { GoPerson } from "react-icons/go";
 import { MdOutlineMail } from "react-icons/md";
 import { useRegister } from "../../../hooks/useRegister";
@@ -27,44 +28,50 @@ export function RegisterPet() {
         }}
       >
         <Heading>
-          Cadastre o seu Pet
+          Seja bem vindo(a), <br/>
+          <Text fontSize="1.5rem">Cadastre o seu Pet</Text>
         </Heading>
 
         <Box
           flex="1"
         >
           <Stack spacing={8} mt="3.5rem" w="100%">
+            <Text fontWeight="bold">Informações do animal</Text>
             <InputGroup size="lg">
               <InputLeftElement
                 pointerEvents='none'
-                children={<Icon as={GoPerson} color='gray.300' />}
+                children={<Icon as={FaDog} color='gray.300' />}
               />
-              <Input type='text' placeholder='Nome completo' />
+              <Input type='text' placeholder='Nome' />
+            </InputGroup>
+
+            <InputGroup size="lg">
+              <Select placeholder='Tamanho'>
+                <option value='pequeno'>Pequeno</option>
+                <option value='pequeno'>Médio</option>
+                <option value='pequeno'>Grande</option>
+              </Select>
             </InputGroup>
 
             <InputGroup size="lg">
               <InputLeftElement
                 pointerEvents='none'
-                children={<Icon as={MdOutlineMail} color='gray.300' />}
+                children={<Icon as={FaBabyCarriage} color='gray.300' />}
               />
-              <Input type='email' placeholder='E-mail' />
+              <Input type='number' placeholder='Idade' />
             </InputGroup>
 
             <InputGroup size="lg">
               <InputLeftElement
                 pointerEvents='none'
-                children={<Icon as={AiOutlineIdcard} color='gray.300' />}
+                children={<Icon as={FaCat} color='gray.300' />}
               />
-              <Input type='number' placeholder='Cpf' />
+              <Input type='text' placeholder='Espécie' />
             </InputGroup>
 
-            <InputGroup size="lg">
-              <InputLeftElement
-                pointerEvents='none'
-                children={<Icon as={AiOutlinePhone} color='gray.300' />}
-              />
-              <Input type='number' placeholder='Telefone' />
-            </InputGroup>
+            <Text fontWeight="bold">Fotos</Text>
+
+            <Text fontWeight="bold">Endereço</Text>
           </Stack>
         </Box>
 

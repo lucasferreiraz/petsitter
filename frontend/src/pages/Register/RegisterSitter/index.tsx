@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Flex, Heading, Icon, Input, InputGroup, InputLeftElement, SlideFade, Stack } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Flex, Heading, Icon, Input, InputGroup, InputLeftElement, SlideFade, Stack, Text, Textarea } from "@chakra-ui/react";
 import { AiOutlineIdcard, AiOutlinePhone } from "react-icons/ai";
 import { GoPerson } from "react-icons/go";
 import { MdOutlineMail } from "react-icons/md";
@@ -27,44 +27,18 @@ export function RegisterSitter() {
         }}
       >
         <Heading>
-          Adicione as seguintes informações para concluir seu cadastro:
+          Seja bem vindo(a), <br/>
+          <Text fontSize="1.5rem">Adicione suas informações</Text>
         </Heading>
 
         <Box
           flex="1"
         >
           <Stack spacing={8} mt="3.5rem" w="100%">
-            <InputGroup size="lg">
-              <InputLeftElement
-                pointerEvents='none'
-                children={<Icon as={GoPerson} color='gray.300' />}
-              />
-              <Input type='text' placeholder='Nome completo' />
-            </InputGroup>
+            <Text fontWeight="bold">Fotos</Text>
 
-            <InputGroup size="lg">
-              <InputLeftElement
-                pointerEvents='none'
-                children={<Icon as={MdOutlineMail} color='gray.300' />}
-              />
-              <Input type='email' placeholder='E-mail' />
-            </InputGroup>
-
-            <InputGroup size="lg">
-              <InputLeftElement
-                pointerEvents='none'
-                children={<Icon as={AiOutlineIdcard} color='gray.300' />}
-              />
-              <Input type='number' placeholder='Cpf' />
-            </InputGroup>
-
-            <InputGroup size="lg">
-              <InputLeftElement
-                pointerEvents='none'
-                children={<Icon as={AiOutlinePhone} color='gray.300' />}
-              />
-              <Input type='number' placeholder='Telefone' />
-            </InputGroup>
+            <Text fontWeight="bold">Fale um pouco sobre você</Text>
+            <Textarea placeholder='Adicione um texto aqui...' resize="none" />
           </Stack>
         </Box>
 
