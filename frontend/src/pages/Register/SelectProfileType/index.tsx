@@ -23,9 +23,11 @@ export function SelectProfileType() {
           height: '100%',
         }}
       >
-        <Heading>
-          Qual será o seu tipo de <br />
-          perfil no Pet Sitter?
+        <Heading
+          fontSize="1.5rem"
+        >
+          Qual será o seu tipo de perfil <br />
+          no Pet Sitter?
         </Heading>
 
         <Box
@@ -36,7 +38,7 @@ export function SelectProfileType() {
             <Stack spacing={5} direction='column'>
               <Box
                 bg={profileType === "proprietario" ? "orange.main" : "gray.100"}
-                p="2rem"
+                p="1.5rem"
                 fontWeight="bold"
                 color={profileType === "proprietario" ? "white" : "gray.500"}
                 cursor={profileType === "proprietario" ? "initial" : "pointer"}
@@ -61,7 +63,7 @@ export function SelectProfileType() {
               </Box>
               <Box
                 bg={profileType === "cuidador" ? "orange.main" : "gray.100"}
-                p="2rem"
+                p="1.5rem"
                 fontWeight="bold"
                 color={profileType === "cuidador" ? "white" : "gray.500"}
                 cursor={profileType === "cuidador" ? "initial" : "pointer"}

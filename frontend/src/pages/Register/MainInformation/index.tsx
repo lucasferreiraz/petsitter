@@ -30,14 +30,16 @@ export function MainInformation() {
           height: '100%',
         }}
       >
-        <Heading>
+        <Heading
+          fontSize="1.5rem"
+        >
           Cadastro
         </Heading>
 
         <Box
           flex="1"
         >
-          <Stack spacing={8} mt="3.5rem" w="100%">
+          <Stack spacing={5} mt="3.3rem" w="100%">
             <InputGroup size="lg">
               <InputLeftElement
                 pointerEvents='none'

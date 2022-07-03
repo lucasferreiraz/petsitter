@@ -28,14 +28,16 @@ export function Address() {
           height: '100%',
         }}
       >
-        <Heading>
+        <Heading
+          fontSize="1.5rem"
+        >
           Adicione um endereço
         </Heading>
 
         <Box
           flex="1"
         >
-          <Stack spacing={8} mt="3.5rem" w="100%">
+          <Stack spacing={5} mt="3.3rem" w="100%">
             <InputGroup size="lg">
               <InputLeftElement
                 pointerEvents='none'
@@ -53,19 +55,21 @@ export function Address() {
             </InputGroup>
 
             <InputGroup size="lg">
-              <InputLeftElement
-                pointerEvents='none'
-                children={<Icon as={MdLocationCity} color='gray.300' />}
-              />
-              <Input type='text' placeholder='Cidade' />
-            </InputGroup>
+              <InputGroup size="lg">
+                <InputLeftElement
+                  pointerEvents='none'
+                  children={<Icon as={MdLocationCity} color='gray.300' />}
+                />
+                <Input type='text' placeholder='Cidade' />
+              </InputGroup>
 
-            <InputGroup size="lg">
-              <InputLeftElement
-                pointerEvents='none'
-                children={<Icon as={MdLocationCity} color='gray.300' />}
-              />
-              <Input type='text' placeholder='Bairro' />
+              <InputGroup size="lg" ml="5">
+                <InputLeftElement
+                  pointerEvents='none'
+                  children={<Icon as={MdLocationCity} color='gray.300' />}
+                />
+                <Input type='text' placeholder='Bairro' />
+              </InputGroup>
             </InputGroup>
 
             <InputGroup size="lg">
@@ -90,14 +94,6 @@ export function Address() {
                 children={<Icon as={BiDotsHorizontalRounded} color='gray.300' />}
               />
               <Input type='text' placeholder='Complemento' />
-            </InputGroup>
-
-            <InputGroup size="lg">
-              <InputLeftElement
-                pointerEvents='none'
-                children={<Icon as={AiOutlineHome} color='gray.300' />}
-              />
-              <Input type='text' placeholder='Nome do endereço (Ex.: Casa, Casa de praia...)' />
             </InputGroup>
           </Stack>
         </Box>
