@@ -3,10 +3,11 @@ import { Logo } from "../Logo";
 import { HeaderNavigation } from "./HeaderNavigation";
 
 interface HeaderProps {
-  navItemSelected: "search" | "addPet" | "login";
+  navItemSelected: "" | "search" | "addPet" | "login";
+  minified?: boolean;
 }
 
-export function Header({ navItemSelected }: HeaderProps) {
+export function Header({ navItemSelected, minified = false }: HeaderProps) {
   return (
     <Box
       as="header"
@@ -26,28 +27,30 @@ export function Header({ navItemSelected }: HeaderProps) {
         <HeaderNavigation selected={navItemSelected} />
       </Flex>
 
-      <Flex
-        w="100%"
-        maxWidth={1480}
-        mx="auto"
-        align="flex-end"
-        justify="space-between"
-        color="white"
-      >
-        <Heading
-          my="8rem"
-          fontWeight="500"
-          fontSize="2.7rem"
+      {!minified && (
+        <Flex
+          w="100%"
+          maxWidth={1480}
+          mx="auto"
+          align="flex-end"
+          justify="space-between"
+          color="white"
         >
-          Procure um <b>cuidador</b> <br />
-          para o seu Pet!
-        </Heading>
+          <Heading
+            my="8rem"
+            fontWeight="500"
+            fontSize="2.7rem"
+          >
+            Procure um <b>cuidador</b> <br />
+            para o seu Pet!
+          </Heading>
 
-        <Image
-          src="/images/header-image.png"
-          height="20rem"
-        />
-      </Flex>
+          <Image
+            src="/images/header-image.png"
+            height="20rem"
+          />
+        </Flex>
+      )}
     </Box>
   );
 }
