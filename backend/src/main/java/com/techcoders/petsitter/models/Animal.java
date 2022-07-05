@@ -1,7 +1,21 @@
 package com.techcoders.petsitter.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+@Entity
+@Table(name = "animals")
 public class Animal {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	private String name;
@@ -14,11 +28,16 @@ public class Animal {
 	
 	private String sex;
 	
+	@JsonManagedReference
+	@ManyToOne
+	@JoinColumn(name = "animalId")
+	private User user;
+	
 	public Animal() {
 		
 	}
 
-	public Animal(String name, Double size, Integer age, String species, String sex) {
+	public Animal(String name, Double size, Integer age, String species, String sex, User user) {
 		super();
 		this.name = name;
 		this.size = size;
@@ -73,6 +92,14 @@ public class Animal {
 
 	public void setSex(String sex) {
 		this.sex = sex;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	

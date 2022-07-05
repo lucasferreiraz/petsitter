@@ -23,7 +23,9 @@ public class UserDetailsImpl implements UserDetails{
 	
 	private String cpf;
 	
-	private String address;
+	private String phone;
+	
+	private Double rating;
 	
 	private String email;
 	
@@ -32,12 +34,13 @@ public class UserDetailsImpl implements UserDetails{
 	
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public UserDetailsImpl(Long id, String username, String cpf, String address, String email, String password,
+	public UserDetailsImpl(Long id, String username, String cpf, String phone, Double rating, String email, String password,
 			Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
 		this.username = username;
 		this.cpf = cpf;
-		this.address = address;
+		this.phone = phone;
+		this.rating = rating;
 		this.email = email;
 		this.password = password;
 		this.authorities = authorities;
@@ -51,9 +54,10 @@ public class UserDetailsImpl implements UserDetails{
 		
 		return new UserDetailsImpl(
 				user.getId(), 
-				user.getUsername(), 
-				user.getCpf(), 
-				user.getAddress(), 
+				user.getUsername(),
+				user.getCpf(),
+				user.getPhone(),
+				user.getRating(),
 				user.getEmail(), 
 				user.getPassword(), 
 				authorities);
@@ -73,8 +77,12 @@ public class UserDetailsImpl implements UserDetails{
 		return cpf;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getPhone() {
+		return phone;
+	}
+
+	public Double getRating() {
+		return rating;
 	}
 
 	public String getEmail() {
