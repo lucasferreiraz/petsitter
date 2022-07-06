@@ -49,7 +49,7 @@ export function Login() {
             color="orange"
             _hover={{ textDecoration: 'underline' }}
           >
-            Registre-se aqui
+            Registre-se aquii
           </Box>
         </Flex>
 
