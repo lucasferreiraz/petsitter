@@ -10,6 +10,7 @@ import { Login } from './pages/Login';
 import { ForgotPassword } from './pages/ForgotPassword';
 import { Register } from './pages/Register';
 import { Sitter } from './pages/Sitter';
+import { CreateContract } from './pages/CreateContract';
 
 import { theme } from './styles/theme';
 
@@ -23,6 +24,7 @@ export function App() {
           <Route path="/recuperarSenha" element={<ForgotPassword />} />
           <Route path="/registrar" element={<Register />} />
           <Route path="/sitter" element={<Sitter />} />
+          <Route path="/contrato" element={<CreateContract />} />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
