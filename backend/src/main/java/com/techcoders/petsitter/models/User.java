@@ -20,7 +20,6 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -34,7 +33,7 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	
 	private String username;
 	
@@ -59,10 +58,11 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Address> addresses = new ArrayList<Address>();
 	
+	/*
 	@JsonBackReference
 	@OneToMany(mappedBy = "user")
 	private List<Animal> animals = new ArrayList<Animal>();
-	
+	*/
 	@JsonManagedReference
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
 	private Scheduling scheduling;
@@ -87,11 +87,11 @@ public class User {
 		this.password = password;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -158,7 +158,8 @@ public class User {
 	public void setAddresses(List<Address> addresses) {
 		this.addresses = addresses;
 	}
-
+	
+	/*
 	public List<Animal> getAnimals() {
 		return animals;
 	}
@@ -166,7 +167,7 @@ public class User {
 	public void setAnimals(List<Animal> animals) {
 		this.animals = animals;
 	}
-
+	*/
 	public Scheduling getScheduling() {
 		return scheduling;
 	}

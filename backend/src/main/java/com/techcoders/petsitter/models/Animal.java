@@ -8,11 +8,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "animals")
 public class Animal {
+	
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,11 +30,12 @@ public class Animal {
 	
 	private String sex;
 	
-	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "animalId")
+	@JsonIgnore
 	private User user;
 	
+	/*
 	public Animal() {
 		
 	}
@@ -45,7 +48,8 @@ public class Animal {
 		this.species = species;
 		this.sex = sex;
 	}
-
+	*/
+	
 	public Integer getId() {
 		return id;
 	}

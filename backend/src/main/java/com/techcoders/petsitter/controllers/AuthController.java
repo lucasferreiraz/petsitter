@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
@@ -55,6 +54,8 @@ public class AuthController {
 	@Autowired
 	JwtUtils jwtUtils;
 	
+	public static Integer currentUserId;
+	
 	//Autentificação de usuário
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest){
@@ -73,11 +74,14 @@ public class AuthController {
 											.map(item -> item.getAuthority())
 											.collect(Collectors.toList());
 		
+		currentUserId = userDetails.getId();
+		
 		return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
 								  .body(new UserInfoResponse(userDetails.getId(), 
 										  					 userDetails.getUsername(), 
 										  					 userDetails.getEmail(), 
 										  					 roles));
+		
 		
 	}
 	
@@ -118,7 +122,7 @@ public class AuthController {
 					break;
 					
 				case "proprietario":
-					Role proprietarioRole = roleRepository.findByName(EnumRole.ROLE_CUIDADOR)
+					Role proprietarioRole = roleRepository.findByName(EnumRole.ROLE_PROPRIETARIO)
 													  .orElseThrow(() -> new RuntimeException("Erro: role não encontrada."));
 					roles.add(proprietarioRole);
 					break;
@@ -149,6 +153,7 @@ public class AuthController {
 								  .body(new MessageResponse("Você fez logout!"));
 		
 	}
+	
 	
 	
 }
