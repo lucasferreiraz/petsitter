@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "addresses")
@@ -16,7 +16,7 @@ public class Address {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	
 	private String number;
 	
@@ -26,15 +26,16 @@ public class Address {
 	
 	private String complement;
 	
-	private String cidade;
+	private String city;
 	
-	private String estado;
+	private String state;
 	
-	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "userId")
+	@JsonIgnore
 	private User user;
 	
+	/*
 	public Address() {
 		
 	}
@@ -48,12 +49,12 @@ public class Address {
 		this.cep = cep;
 		this.complement = complement;
 	}
-
-	public Long getId() {
+	 */
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -89,20 +90,20 @@ public class Address {
 		this.complement = complement;
 	}
 
-	public String getCidade() {
-		return cidade;
+	public String getCity() {
+		return city;
 	}
 
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
-	public String getEstado() {
-		return estado;
+	public String getState() {
+		return state;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public User getUser() {

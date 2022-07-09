@@ -54,11 +54,12 @@ public class User {
     		   inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 	
+	/*
 	@JsonManagedReference
 	@OneToMany(mappedBy = "user")
 	private List<Address> addresses = new ArrayList<Address>();
 	
-	/*
+	
 	@JsonBackReference
 	@OneToMany(mappedBy = "user")
 	private List<Animal> animals = new ArrayList<Animal>();
@@ -150,7 +151,8 @@ public class User {
 	public void setRating(Double rating) {
 		this.rating = rating;
 	}
-
+	
+	/*
 	public List<Address> getAddresses() {
 		return addresses;
 	}
@@ -159,7 +161,7 @@ public class User {
 		this.addresses = addresses;
 	}
 	
-	/*
+
 	public List<Animal> getAnimals() {
 		return animals;
 	}
