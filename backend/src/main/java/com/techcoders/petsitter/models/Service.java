@@ -22,11 +22,12 @@ public class Service {
 	
 	private String description;
 	
+	/*
 	@JsonBackReference
 	@OneToOne
 	@JoinColumn(name = "schedulingId")
 	private Scheduling scheduling;
-	
+	*/
 	public Service() {
 		
 	}
@@ -60,7 +61,7 @@ public class Service {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+	/*
 	public Scheduling getScheduling() {
 		return scheduling;
 	}
@@ -69,6 +70,6 @@ public class Service {
 		this.scheduling = scheduling;
 	}
 	
-	
+	*/
 	
 }

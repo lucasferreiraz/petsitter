@@ -55,19 +55,19 @@ public class User {
 	private Set<Role> roles = new HashSet<>();
 	
 	/*
-	@JsonManagedReference
+	//@JsonManagedReference
 	@OneToMany(mappedBy = "user")
 	private List<Address> addresses = new ArrayList<Address>();
 	
 	
-	@JsonBackReference
+	//@JsonBackReference
 	@OneToMany(mappedBy = "user")
 	private List<Animal> animals = new ArrayList<Animal>();
-	*/
-	@JsonManagedReference
+	
+	//@JsonManagedReference
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
 	private Scheduling scheduling;
-	
+	*/
 	
 	public User() {
 		
@@ -169,7 +169,7 @@ public class User {
 	public void setAnimals(List<Animal> animals) {
 		this.animals = animals;
 	}
-	*/
+	
 	public Scheduling getScheduling() {
 		return scheduling;
 	}
@@ -177,7 +177,7 @@ public class User {
 	public void setScheduling(Scheduling scheduling) {
 		this.scheduling = scheduling;
 	}	
-	
+	*/
 	
 	
 }

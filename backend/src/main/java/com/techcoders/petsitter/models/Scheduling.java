@@ -10,6 +10,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -22,7 +24,15 @@ public class Scheduling {
 	
 	private Integer totalDays;
 	
-	private Double totalValue;
+	private Double dailyValue;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy", shape = Shape.STRING)
+	private String initialDate;
+	
+	
+	@JsonFormat(pattern = "dd/MM/yyyy", shape = Shape.STRING)
+	private String finalDate;
+	
 	
 	private String description;
 	
@@ -31,18 +41,20 @@ public class Scheduling {
 	@JoinColumn(name = "userId")
 	private User user;
 	
+	/*
 	@JsonManagedReference
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "scheduling")
 	private Service service;
+	*/
 	
 	public Scheduling() {
 		
 	}
 
-	public Scheduling(Integer totalDays, Double totalValue, String description) {
+	public Scheduling(Integer totalDays, Double dailyValue, String description) {
 		super();
 		this.totalDays = totalDays;
-		this.totalValue = totalValue;
+		this.dailyValue = dailyValue;
 		this.description = description;
 	}
 
@@ -62,12 +74,12 @@ public class Scheduling {
 		this.totalDays = totalDays;
 	}
 
-	public Double getTotalValue() {
-		return totalValue;
+	public Double getDailyValue() {
+		return dailyValue;
 	}
 
-	public void setTotalValue(Double totalValue) {
-		this.totalValue = totalValue;
+	public void setDailyValue(Double dailyValue) {
+		this.dailyValue = dailyValue;
 	}
 
 	public String getDescription() {
@@ -85,7 +97,8 @@ public class Scheduling {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
+	
+	/*
 	public Service getService() {
 		return service;
 	}
@@ -93,6 +106,27 @@ public class Scheduling {
 	public void setService(Service service) {
 		this.service = service;
 	}
+	*/
+	
+	public String getInitialDate() {
+		return initialDate;
+	}
+
+	public void setInitialDate(String initialDate) {
+		this.initialDate = initialDate;
+	}
+	
+	
+	public String getFinalDate() {
+		return finalDate;
+	}
+
+	public void setFinalDate(String finalDate) {
+		this.finalDate = finalDate;
+	}
+	
+	
+	
 	
 	
 	
