@@ -5,6 +5,7 @@ import { GoEye, GoEyeClosed, GoPerson } from "react-icons/go";
 import { MdOutlineMail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useRegister } from "../../../hooks/useRegister";
+import InputMask from "react-input-mask";
 
 export function MainInformation() {
   const [showPassword, setShowPassword] = useState(false);
@@ -61,7 +62,7 @@ export function MainInformation() {
                 pointerEvents='none'
                 children={<Icon as={AiOutlineIdcard} color='gray.300' />}
               />
-              <Input type='number' placeholder='Cpf' />
+              <Input as={InputMask} mask="999.999.999-99" placeholder='Cpf' />
             </InputGroup>
 
             <InputGroup size="lg">
@@ -69,7 +70,7 @@ export function MainInformation() {
                 pointerEvents='none'
                 children={<Icon as={AiOutlinePhone} color='gray.300' />}
               />
-              <Input type='number' placeholder='Telefone' />
+              <Input as={InputMask} mask="(99)99999-9999" placeholder='Telefone' />
             </InputGroup>
 
             <InputGroup size="lg">

@@ -5,6 +5,7 @@ import { FaCity } from "react-icons/fa";
 import { FiMap } from "react-icons/fi";
 import { MdLocationCity } from "react-icons/md";
 import { useRegister } from "../../../hooks/useRegister";
+import InputMask from "react-input-mask";
 
 export function Address() {
   const { formStep, nextStep, prevStep } = useRegister();
@@ -43,7 +44,7 @@ export function Address() {
                 pointerEvents='none'
                 children={<Icon as={FiMap} color='gray.300' />}
               />
-              <Input type='number' placeholder='Cep' />
+              <Input as={InputMask} mask="99999-999" placeholder='Cep' />
             </InputGroup>
 
             <InputGroup size="lg">

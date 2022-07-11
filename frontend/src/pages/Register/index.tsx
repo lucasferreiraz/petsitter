@@ -1,4 +1,4 @@
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading, Image } from "@chakra-ui/react";
 import { SelectProfileType } from "./SelectProfileType";
 import { MainInformation } from "./MainInformation";
 import { Address } from "./Address";
@@ -18,7 +18,7 @@ export function Register() {
         align="center"
         justify="center"
       >
-        <Heading>IMAGE</Heading>
+        <Image src="/images/register-banner.jpg" />
       </Flex>
       
       <RegisterProvider>

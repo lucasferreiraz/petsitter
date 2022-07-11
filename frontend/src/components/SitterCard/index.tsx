@@ -1,4 +1,5 @@
 import { Avatar, Box, Flex, HStack, Text } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 import { Rating } from "../Rating";
 
 interface TagProps {
@@ -33,8 +34,11 @@ interface SitterCardProps {
 }
 
 export function SitterCard(props: SitterCardProps) {
+  const navigate = useNavigate();
+
   return (
     <Flex
+      onClick={() => navigate('/sitter')}
       direction="column"
       p="5"
       borderRadius="md"

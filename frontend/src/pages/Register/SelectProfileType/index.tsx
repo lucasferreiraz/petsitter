@@ -1,7 +1,9 @@
 import { Box, Button, ButtonGroup, Flex, Heading, Radio, RadioGroup, SlideFade, Stack, Text } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 import { useRegister } from "../../../hooks/useRegister";
 
 export function SelectProfileType() {
+  const navigate = useNavigate();
   const { formStep, nextStep, profileType, setProfileType } = useRegister();
 
   return (
@@ -96,7 +98,7 @@ export function SelectProfileType() {
           display="flex"
           justifyContent="flex-end"
         >
-          <Button size="lg" colorScheme='blackAlpha'>Cancelar</Button>
+          <Button size="lg" colorScheme='blackAlpha' onClick={() => navigate('/home')}>Cancelar</Button>
           <Button size="lg" variant='solid' colorScheme='orange' onClick={nextStep}>Continuar</Button>
         </ButtonGroup>
       </SlideFade>

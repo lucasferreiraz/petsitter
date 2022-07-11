@@ -2,11 +2,15 @@ import { Avatar, Box, Button, ButtonGroup, Center, Divider, Flex, Heading, HStac
 import { BiMoney } from "react-icons/bi";
 import { CgArrowRight } from "react-icons/cg";
 import { MdLocationPin } from "react-icons/md";
+import InputMask from 'react-input-mask';
+import { useNavigate } from "react-router-dom";
 
 import { Header } from "../../components/Header";
 import { Rating } from "../../components/Rating";
 
 export function CreateContract() {
+  const navigate = useNavigate();
+
   return (
     <Flex direction="column">
       <Header navItemSelected="" minified />
@@ -48,28 +52,28 @@ export function CreateContract() {
         <Flex align="center">
           <Box>
             <Text>Data de início</Text>
-            <Input type="text" />
+            <Input as={InputMask} mask="99/99/9999" />
           </Box>
           <Box mt="1.5rem" mx="0.8rem">
             <Icon as={CgArrowRight} fontSize="1.3rem" />
           </Box>
           <Box>
             <Text>Data de fim</Text>
-            <Input type="text" />
+            <Input as={InputMask} mask="99/99/9999" />
           </Box>
           <Center mx="1rem" height='50px'>
             <Divider orientation='vertical' />
           </Center>
           <Box>
             <Text>Horário de entrada</Text>
-            <Input type="text" />
+            <Input as={InputMask} mask="99:99" />
           </Box>
           <Box mt="1.5rem" mx="0.8rem">
             <Icon as={CgArrowRight} fontSize="1.3rem" />
           </Box>
           <Box>
             <Text>Horário de saída</Text>
-            <Input type="text" />
+            <Input as={InputMask} mask="99:99" />
           </Box>
         </Flex>
 
@@ -90,7 +94,7 @@ export function CreateContract() {
         <Textarea resize="none" />
 
         <ButtonGroup justifyContent="flex-end" mt="1.5rem" spacing='6'>
-          <Button>Cancelar</Button>
+          <Button onClick={() => navigate('/home')}>Cancelar</Button>
           <Button colorScheme="orange">Agendar</Button>
         </ButtonGroup>
       </Flex>

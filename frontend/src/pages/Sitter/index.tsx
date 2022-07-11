@@ -1,10 +1,13 @@
 import { Avatar, Box, Button, Divider, Flex, Icon, Text } from "@chakra-ui/react";
 import { MdLocationPin } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 import { Header } from "../../components/Header";
 import { Rating } from "../../components/Rating";
 
 export function Sitter() {
+  const navigate = useNavigate();
+
   return (
     <Flex direction="column">
       <Header navItemSelected="" minified />
@@ -59,7 +62,7 @@ export function Sitter() {
             <Divider my="1" />
             <Flex direction="column" mt="1.2rem">
               <Button colorScheme="orange" rounded="2xl">Iniciar conversa</Button>
-              <Button colorScheme="orange" mt="1.2rem" rounded="2xl">Reservar</Button>
+              <Button colorScheme="orange" mt="1.2rem" rounded="2xl" onClick={() => navigate('/contrato')}>Reservar</Button>
             </Flex>
           </Box>
 

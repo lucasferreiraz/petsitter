@@ -5,8 +5,10 @@ import { GoEye } from 'react-icons/go';
 import { GoEyeClosed } from 'react-icons/go';
 import { useState } from "react";
 import { BiRightArrowAlt } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -48,8 +50,9 @@ export function Login() {
             as='button'
             color="orange"
             _hover={{ textDecoration: 'underline' }}
+            onClick={() => navigate('/registrar')}
           >
-            Registre-se aquii
+            Registre-se aqui
           </Box>
         </Flex>
 
@@ -77,7 +80,7 @@ export function Login() {
             />
           </InputGroup>
           <Box transform="translateY(-50%)">
-            <Button fontSize="0.9rem" fontWeight="normal" variant='link'>Esqueci minha senha</Button>
+            <Button fontSize="0.9rem" fontWeight="normal" variant='link' onClick={() => navigate('/recuperarSenha')}>Esqueci minha senha</Button>
           </Box>
 
           <Flex
