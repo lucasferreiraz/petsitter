@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Icon, Image, Input, InputGroup, InputLeftElement, InputRightElement, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Icon, Image, Input, InputGroup, InputLeftElement, InputRightElement, Spinner, Stack, Text } from "@chakra-ui/react";
 import { MdOutlineMail } from 'react-icons/md';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { GoEye } from 'react-icons/go';
@@ -6,10 +6,26 @@ import { GoEyeClosed } from 'react-icons/go';
 import { useState } from "react";
 import { BiRightArrowAlt } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/auth";
+import { toast } from 'react-toastify';
 
 export function Login() {
   const navigate = useNavigate();
+  const { signIn, loading, changeLoading } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
+  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  async function handleLogin() {
+    changeLoading(true);
+    await signIn({ email, password }).then(response => {
+      if (response !== "success") {
+        toast.error('Usuário ou senha inválidos!');
+      }
+      changeLoading(false);
+    });
+  }
 
   return (
     <Flex
@@ -62,7 +78,7 @@ export function Login() {
               pointerEvents='none'
               children={<Icon as={MdOutlineMail} color='gray.300' />}
             />
-            <Input type='email' placeholder='E-mail' />
+            <Input type='email' placeholder='E-mail' value={email} onChange={e => setEmail(e.target.value)} />
           </InputGroup>
 
           <InputGroup>
@@ -70,7 +86,7 @@ export function Login() {
               pointerEvents='none'
               children={<Icon as={RiLockPasswordLine} color="gray.300" />}
             />
-            <Input type={showPassword ? 'text' : 'password'} placeholder='Senha' />
+            <Input type={showPassword ? 'text' : 'password'} placeholder='Senha' value={password} onChange={e => setPassword(e.target.value)} />
             <InputRightElement
               cursor="pointer"
               onClick={() => setShowPassword(prevState => !prevState)}
@@ -88,11 +104,15 @@ export function Login() {
           >
             <Button
               size="lg"
-              rightIcon={<Icon fontSize="1.3rem" as={BiRightArrowAlt} />}
+              rightIcon={
+                loading ? <Spinner /> : <Icon fontSize="1.3rem" as={BiRightArrowAlt} />
+              }
               transition="all 0.2s"
               colorScheme="orange"
               color="white"
               mt="4"
+              w="9rem"
+              onClick={() => handleLogin()}
             >
               Continuar
             </Button>

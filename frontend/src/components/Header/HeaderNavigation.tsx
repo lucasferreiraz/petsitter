@@ -5,6 +5,7 @@ import { BiSearch } from 'react-icons/bi';
 import { FaCat } from 'react-icons/fa';
 import { MdLogin } from 'react-icons/md';
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/auth";
 
 interface HeaderNavigationProps {
   selected: "" | "search" | "addPet" | "login";
@@ -18,6 +19,7 @@ interface NavItemProps {
 
 function NavItem({ icon, name, selected, routeNavigation }: NavItemProps) {
   const navigate = useNavigate();
+  const { isAuthenticated, signOut } = useAuth();
 
   return (
     <Flex
@@ -28,7 +30,13 @@ function NavItem({ icon, name, selected, routeNavigation }: NavItemProps) {
       opacity={selected ? "1" : "0.8"}
       h="100%"
       role="group"
-      onClick={() => navigate(routeNavigation)}
+      onClick={() => {
+        if (isAuthenticated && name === "Sair") {
+          signOut();
+        } else {
+          navigate(routeNavigation);
+        }
+      }}
     >
       <Flex
         align="center"
@@ -51,6 +59,8 @@ function NavItem({ icon, name, selected, routeNavigation }: NavItemProps) {
 }
 
 export function HeaderNavigation({ selected }: HeaderNavigationProps) {
+  const { isAuthenticated } = useAuth();
+
   return (
     <HStack
       spacing="10"
@@ -70,7 +80,7 @@ export function HeaderNavigation({ selected }: HeaderNavigationProps) {
       <NavItem
         icon={MdLogin}
         selected={selected === "login"}
-        name="Login"
+        name={isAuthenticated ? 'Sair' : 'Login'}
         routeNavigation="/login"
       />
     </HStack>
