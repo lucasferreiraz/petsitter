@@ -56,6 +56,8 @@ public class AuthController {
 	
 	public static Integer currentUserId;
 	
+	public static String currentUserRole;
+	
 	//Autentificação de usuário
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest){
