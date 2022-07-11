@@ -5,10 +5,20 @@ interface signInProps {
 interface Response {
   token: string | null;
   message: string;
+  profileType: string | undefined;
 }
 
 export function signIn({ email, password }: signInProps): Promise<Response> {
-  const isValid = email === 'pet@email.com' && password === '123';
+  let profileType: string | undefined = undefined;
+
+  let isValid = false;
+  if (email === 'kaiky@gmail.com' && password === '123') {
+    isValid = true;
+    profileType = "proprietario";
+  } else if (email === 'lucas@gmail.com' && password === '123') {
+    isValid = true;
+    profileType = "cuidador";
+  }
 
   return new Promise(resolve => {
     setTimeout(() => {
@@ -17,10 +27,12 @@ export function signIn({ email, password }: signInProps): Promise<Response> {
           ? {
               token: 'gr98wsh97fha937gahw9fha39',
               message: 'success',
+              profileType,
             }
           : {
               token: null,
               message: 'Usuário inválido!',
+              profileType,
             },
       );
     }, 500);

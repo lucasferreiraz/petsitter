@@ -1,7 +1,9 @@
 import { Box, Button, Flex, Heading, HStack, Input, InputGroup, InputLeftElement, InputRightElement, Stack, Table, TableCaption, TableContainer, Tbody, Td, Text, Tfoot, Th, Thead, Tr } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import { Header } from "../../components/Header";
+import { api } from "../../services/api";
 
 interface TableProps {
   id: string,
@@ -66,6 +68,14 @@ const tableBottomInfo: TableProps[] = [
 ];
 
 export function ContractsList() {
+  const [contracts, setContracts] = useState<any>([]);
+
+  useEffect(() => {
+    api.get('/contracts').then(response => {
+      setContracts(response.data);
+    });
+  }, []);
+
   return (
     <Flex direction="column">
       <Header navItemSelected="" minified />
@@ -91,7 +101,7 @@ export function ContractsList() {
           </Button>
         </HStack>
 
-        <TableContainer bg="#FFFCCE">
+        <TableContainer mt="1rem">
           <Table variant='simple'>
             <Thead>
               <Tr>
@@ -104,41 +114,14 @@ export function ContractsList() {
               </Tr>
             </Thead>
             <Tbody>
-              {tableTopInfo.map(info => (
-                <Tr key={info.id}>
-                  <Td>{info.id}</Td>
-                  <Td>{info.ownerInfo}</Td>
-                  <Td>{info.petInfo}</Td>
-                  <Td>{info.date}</Td>
-                  <Td>{info.price}</Td>
-                  <Td>Em análise</Td>
-                </Tr>
-              ))}
-            </Tbody>
-          </Table>
-        </TableContainer>
-
-        <TableContainer mt="5rem">
-          <Table variant='simple'>
-            <Thead>
-              <Tr>
-                <Th>#</Th>
-                <Th>Proprietário</Th>
-                <Th>Informações do PET</Th>
-                <Th>Data</Th>
-                <Th>Preço</Th>
-                <Th isNumeric>Status</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {tableBottomInfo.map(info => (
-                <Tr key={info.id}>
-                  <Td>{info.id}</Td>
-                  <Td>{info.ownerInfo}</Td>
-                  <Td>{info.petInfo}</Td>
-                  <Td>{info.date}</Td>
-                  <Td>{info.price}</Td>
-                  <Td>{info.status}</Td>
+              {contracts.map((contract: any) => (
+                <Tr key={contract.id}>
+                  <Td>{contract.id}</Td>
+                  <Td>Kaiky</Td>
+                  <Td>{contract.pet}</Td>
+                  <Td>{contract.startDate}</Td>
+                  <Td>R$ 50,00</Td>
+                  <Td isNumeric>Em análise</Td>
                 </Tr>
               ))}
             </Tbody>

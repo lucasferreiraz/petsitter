@@ -10,6 +10,7 @@ import { Filter } from "./Filter";
 import { CgWorkAlt } from 'react-icons/cg'
 import { FiMapPin } from 'react-icons/fi';
 import { IoMdCalendar } from 'react-icons/io';
+import { api } from "../../services/api";
 
 export function Home() {
   const [searchIsLoading, setSearchIsLoading] = useState(false);
@@ -23,7 +24,9 @@ export function Home() {
   }
 
   useEffect(() => {
-    setSitters(sittersData);
+    api.get('/users').then(response => {
+      setSitters(response.data);
+    });
   }, []);
 
   return (
@@ -81,6 +84,7 @@ export function Home() {
 
         <Flex
           mt="5"
+          mb="5rem"
         >
           <Box
             width="20rem"
@@ -97,17 +101,21 @@ export function Home() {
               align="flex-start"
               spacing="5"
             >
-              {sitters.map(sitter => (
-                <SitterCard
-                  key={sitter.name}
-                  name={sitter.name}
-                  address={sitter.address}
-                  price={sitter.price}
-                  description={sitter.description}
-                  rating={sitter.rating}
-                  tags={sitter.tags}
-                />
-              ))}
+              {sitters.map(sitter => {
+                if (sitter.type === "cuidador") {
+                  return (
+                  <SitterCard
+                    userId={sitter.id}
+                    key={sitter.name}
+                    name={sitter.name}
+                    address={sitter.address}
+                    price={sitter.price}
+                    description={sitter.description}
+                    rating={sitter.rating}
+                    tags={sitter.tags}
+                  />);
+                }
+              })}
             </VStack>
           </Box>
         </Flex>

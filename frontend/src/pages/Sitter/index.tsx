@@ -1,12 +1,25 @@
 import { Avatar, Box, Button, Divider, Flex, Icon, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { MdLocationPin } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { Header } from "../../components/Header";
 import { Rating } from "../../components/Rating";
+import { api } from "../../services/api";
 
 export function Sitter() {
+  const [userInfo, setUserInfo] = useState<any>({});
   const navigate = useNavigate();
+  
+  const useQuery = () => new URLSearchParams(useLocation().search);
+  let query = useQuery();
+
+  useEffect(() => {
+    const userId = query.get('id');
+    api.get(`/users/${userId}`).then(response => {
+      setUserInfo(response.data);
+    });
+  }, []);
 
   return (
     <Flex direction="column">
@@ -18,10 +31,10 @@ export function Sitter() {
           <Flex direction="row">
             <Avatar size="xl" mr="5" />
             <Flex direction="column">
-              <Text fontSize="1.3rem" fontWeight="medium">Lucas Ferreira</Text>
+              <Text fontSize="1.3rem" fontWeight="medium">{userInfo.name}</Text>
               <Flex fontSize="1.1rem" color="gray.400" mb="3" align="center">
                 <Icon as={MdLocationPin} />
-                Londres, Nova York
+                {userInfo.address}
               </Flex>
               <Rating rating={3}/>
             </Flex>
@@ -31,7 +44,7 @@ export function Sitter() {
             <Text fontSize="1.3rem" fontWeight="medium">Sobre</Text>
             <Divider my="1" />
             <Text color="gray.500" textAlign="justify">
-              Desde sempre gostei muito de animais, meu tio me escolhia quando viajava e deixava seu cachorro comigo. Sempre gostei de dar essa atenção especial a eles, é o que eu me sinto bem em fazer. O que eles precisam é de atenção e carinho e em troca recebemos o amor incondicional deles. Seu companheiro vai ser muito bem recebido e amado.
+              {userInfo.description}
             </Text>
           </Box>
 
@@ -39,7 +52,7 @@ export function Sitter() {
             <Text fontSize="1.3rem" fontWeight="medium">Como é a hospedagem</Text>
             <Divider my="1" />
             <Text color="gray.500" textAlign="justify">
-              Aa
+              Visita ou hospedagem.
             </Text>
           </Box>
 
@@ -47,7 +60,7 @@ export function Sitter() {
             <Text fontSize="1.3rem" fontWeight="medium">Preferências</Text>
             <Divider my="1" />
             <Text color="gray.500" textAlign="justify">
-              Aa
+              Tenho mais habilidades em lidar com gatos e cachorros!
             </Text>
           </Box>
 
@@ -57,7 +70,7 @@ export function Sitter() {
           <Box bg="white" p="1.5rem" rounded="lg" shadow="md">
             <Flex align="center" justify="space-between">
               <Text fontSize="1.3rem" fontWeight="medium">Serviços</Text>
-              <Text>R$ 69,99</Text>
+              <Text>{userInfo.price}</Text>
             </Flex>
             <Divider my="1" />
             <Flex direction="column" mt="1.2rem">
@@ -70,7 +83,11 @@ export function Sitter() {
             <Text fontSize="1.3rem" fontWeight="medium">Disponibilidade</Text>
             <Divider my="1" />
             <Text color="gray.500" textAlign="justify">
-              DATA...
+              Segunda | 15:00 - 18:00 <br />
+              Terça | 12:00 - 18:00 <br />
+              Quarta | 9:00 - 12:00 <br />
+              Quinta | 9:00 - 18:00 <br />
+              Sexta | 9:00 - 18:00 <br />
             </Text>
           </Box>
 

@@ -13,7 +13,7 @@ export function Login() {
   const navigate = useNavigate();
   const { signIn, loading, changeLoading } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
-  
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -21,7 +21,8 @@ export function Login() {
     changeLoading(true);
     await signIn({ email, password }).then(response => {
       if (response !== "success") {
-        toast.error('Usuário ou senha inválidos!');
+        toast.dismiss();
+        toast.error(response);
       }
       changeLoading(false);
     });

@@ -6,6 +6,7 @@ export interface SittersDataProps {
   description: string;
   tags: string[];
   rating: number;
+  type?: string;
 }
 
 export const sittersData: SittersDataProps[] = [

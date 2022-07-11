@@ -59,7 +59,7 @@ function NavItem({ icon, name, selected, routeNavigation }: NavItemProps) {
 }
 
 export function HeaderNavigation({ selected }: HeaderNavigationProps) {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, userInfo } = useAuth();
 
   return (
     <HStack
@@ -69,13 +69,13 @@ export function HeaderNavigation({ selected }: HeaderNavigationProps) {
         icon={BiSearch}
         selected={selected === "search"}
         name="Busque sitters"
-        routeNavigation="/"
+        routeNavigation="/home"
       />
       <NavItem
         icon={FaCat}
         selected={selected === "addPet"}
-        name="Cadastrar animal"
-        routeNavigation="/"
+        name={userInfo.profileType === "cuidador" ? "Ver contratos" : "Cadastrar animal"}
+        routeNavigation={userInfo.profileType === "cuidador" ? "/contratos/lista" : "/"}
       />
       <NavItem
         icon={MdLogin}

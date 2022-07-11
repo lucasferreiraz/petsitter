@@ -6,6 +6,8 @@ import { Routes } from './routes';
 
 import { theme } from './styles/theme';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 export function App() {
   return (
     <ChakraProvider theme={theme}>

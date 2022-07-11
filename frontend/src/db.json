@@ -1,0 +1,161 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Carlos Kaiky",
+      "email": "kaiky@email.com",
+      "password": "12345",
+      "phone": "85991229607",
+      "type": "proprietario",
+      "rating": 5,
+      "description": "Desde sempre gostei muito de animais, meu tio me escolhia quando viajava e deixava seu cachorro comigo. Sempre gostei de dar essa atenção especial a eles, é o que eu me sinto bem em fazer. O que eles precisam é de atenção e carinho e em troca recebemos o amor incondicional deles. Seu companheiro vai ser muito bem recebido e amado.",
+      "tags": [
+        "Passeio",
+        "Adestramento"
+      ],
+      "price": "R$ 70,00",
+      "address": "Fortaleza - CE"
+    },
+    {
+      "id": 2,
+      "name": "Lucas Ferreira",
+      "email": "lucas@email.com",
+      "password": "12345",
+      "phone": "85991229607",
+      "type": "cuidador",
+      "rating": 3,
+      "description": "Desde sempre gostei muito de animais, meu tio me escolhia quando viajava e deixava seu cachorro comigo. Sempre gostei de dar essa atenção especial a eles, é o que eu me sinto bem em fazer. O que eles precisam é de atenção e carinho e em troca recebemos o amor incondicional deles. Seu companheiro vai ser muito bem recebido e amado.",
+      "tags": [
+        "Passeio",
+        "Adestramento"
+      ],
+      "price": "R$ 60,00",
+      "address": "Fortaleza - CE"
+    },
+    {
+      "id": 3,
+      "name": "Viviane",
+      "email": "viviane@email.com",
+      "password": "12345",
+      "phone": "85991229607",
+      "type": "proprietario",
+      "rating": 5,
+      "description": "Desde sempre gostei muito de animais, meu tio me escolhia quando viajava e deixava seu cachorro comigo. Sempre gostei de dar essa atenção especial a eles, é o que eu me sinto bem em fazer. O que eles precisam é de atenção e carinho e em troca recebemos o amor incondicional deles. Seu companheiro vai ser muito bem recebido e amado.",
+      "tags": [
+        "Passeio",
+        "Adestramento"
+      ],
+      "price": "R$ 30,00",
+      "address": "Fortaleza - CE"
+    },
+    {
+      "id": 4,
+      "name": "Guilherme",
+      "email": "guilherme@email.com",
+      "password": "12345",
+      "phone": "85991229607",
+      "type": "cuidador",
+      "rating": 1,
+      "description": "Desde sempre gostei muito de animais, meu tio me escolhia quando viajava e deixava seu cachorro comigo. Sempre gostei de dar essa atenção especial a eles, é o que eu me sinto bem em fazer. O que eles precisam é de atenção e carinho e em troca recebemos o amor incondicional deles. Seu companheiro vai ser muito bem recebido e amado.",
+      "tags": [
+        "Passeio",
+        "Adestramento"
+      ],
+      "price": "R$ 40,00",
+      "address": "Fortaleza - CE"
+    }
+  ],
+  "contracts": [
+    {
+      "id": 1,
+      "startDate": "10/07/2022",
+      "endDate": "12/07/2022",
+      "startTime": "10:30",
+      "endTime": "12:00",
+      "pet": "Billy",
+      "address": "Rua Joao Batista, 988",
+      "moreInformation": "Cuide bem do meu cachorro!"
+    },
+    {
+      "startDate": "",
+      "endDate": "",
+      "startTime": "",
+      "endTime": "",
+      "pet": "",
+      "address": "",
+      "moreInformation": "",
+      "id": 2
+    },
+    {
+      "startDate": "",
+      "endDate": "",
+      "startTime": "",
+      "endTime": "",
+      "pet": "",
+      "address": "",
+      "moreInformation": "",
+      "id": 3
+    },
+    {
+      "startDate": "",
+      "endDate": "",
+      "startTime": "",
+      "endTime": "",
+      "pet": "",
+      "address": "",
+      "moreInformation": "",
+      "id": 4
+    },
+    {
+      "startDate": "21/31/2312",
+      "endDate": "",
+      "startTime": "",
+      "endTime": "",
+      "pet": "",
+      "address": "",
+      "moreInformation": "",
+      "id": 5
+    },
+    {
+      "startDate": "21/31/2312",
+      "endDate": "",
+      "startTime": "",
+      "endTime": "",
+      "pet": "",
+      "address": "",
+      "moreInformation": "",
+      "id": 6
+    },
+    {
+      "startDate": "21/31/2312",
+      "endDate": "",
+      "startTime": "",
+      "endTime": "",
+      "pet": "",
+      "address": "",
+      "moreInformation": "",
+      "id": 7
+    },
+    {
+      "startDate": "",
+      "endDate": "",
+      "startTime": "",
+      "endTime": "",
+      "pet": "",
+      "address": "",
+      "moreInformation": "",
+      "id": 8
+    },
+    {
+      "startDate": "",
+      "endDate": "",
+      "startTime": "",
+      "endTime": "",
+      "pet": "",
+      "address": "",
+      "moreInformation": "",
+      "price": 50,
+      "id": 9
+    }
+  ]
+}

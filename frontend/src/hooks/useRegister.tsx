@@ -8,6 +8,21 @@ type FormStepType =
 | "registerSitter";
 type ProfileType = "proprietario" | "cuidador";
 
+interface DataProps {
+  name: string;
+  email: string;
+  cpf: string;
+  phone: string;
+  password: string;
+  cep: string;
+  state: string;
+  city: string;
+  bairro: string;
+  logradouro: string;
+  number: string;
+  complement: string;
+}
+
 interface RegisterContextData {
   formStep: FormStepType;
   setFormStep: Dispatch<SetStateAction<FormStepType>>;
@@ -15,6 +30,8 @@ interface RegisterContextData {
   prevStep: () => void;
   profileType: ProfileType;
   setProfileType: Dispatch<SetStateAction<ProfileType>>;
+  userData: DataProps;
+  setUserData: Dispatch<SetStateAction<DataProps>>;
 }
 
 const RegisterContext = createContext<RegisterContextData>(
@@ -24,6 +41,7 @@ const RegisterContext = createContext<RegisterContextData>(
 export function RegisterProvider({ children }: { children: ReactNode }) {
   const [formStep, setFormStep] = useState<FormStepType>("selectProfileType");
   const [profileType, setProfileType] = useState<ProfileType>("proprietario");
+  const [userData, setUserData] = useState<DataProps>({} as DataProps);
 
   function nextStep() {
     if (formStep === "selectProfileType") {
@@ -52,7 +70,9 @@ export function RegisterProvider({ children }: { children: ReactNode }) {
         nextStep,
         prevStep,
         profileType,
-        setProfileType
+        setProfileType,
+        userData,
+        setUserData
       }}
     >
       {children}

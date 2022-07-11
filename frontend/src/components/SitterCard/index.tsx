@@ -1,6 +1,8 @@
 import { Avatar, Box, Flex, HStack, Text } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { useMemo } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Rating } from "../Rating";
+import { useSearchParams } from 'react-router-dom';
 
 interface TagProps {
   title: string;
@@ -25,6 +27,7 @@ function Tag({ title }: TagProps) {
 }
 
 interface SitterCardProps {
+  userId: number;
   name: string;
   address: string;
   price: string;
@@ -38,7 +41,7 @@ export function SitterCard(props: SitterCardProps) {
 
   return (
     <Flex
-      onClick={() => navigate('/sitter')}
+      onClick={() => navigate(`/sitter?id=${props.userId}`)}
       direction="column"
       p="5"
       borderRadius="md"

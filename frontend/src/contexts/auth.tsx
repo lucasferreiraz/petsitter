@@ -18,9 +18,14 @@ interface AuthContextData {
   changeLoading(value: boolean): void;
   signIn({ email, password }: signInProps): Promise<string>;
   signOut(): void;
+  userInfo: userInfoProps;
 }
 interface AuthProviderProps {
   children: ReactNode;
+}
+
+interface userInfoProps {
+  profileType: string | undefined;
 }
 
 const TOKEN_NAME = '@Petsitter:token';
@@ -28,6 +33,9 @@ const TOKEN_NAME = '@Petsitter:token';
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export function AuthProvider({ children }: AuthProviderProps) {
+  const [userInfo, setUserInfo] = useState<userInfoProps>({
+    profileType: undefined,
+  });
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -45,10 +53,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }, []);
 
   async function signIn({ email, password }: signInProps) {
-    const { token, message } = await auth.signIn({ email, password });
+    const { token, message, profileType } = await auth.signIn({ email, password });
 
     if (token != null) {
       setIsAuthenticated(true);
+      setUserInfo({
+        profileType,
+      });
       localStorage.setItem(TOKEN_NAME, token);
       navigate('/home');
     }
@@ -75,6 +86,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         changeLoading,
         signIn,
         signOut,
+        userInfo
       }}
     >
       {children}
